@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+  <defs>
+    <linearGradient id="valuaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="valuaAccent" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#047857" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <!-- Icon Mark -->
+  <g filter="url(#shadow)">
+    <rect x="6" y="8" width="44" height="44" rx="12" fill="url(#valuaGrad)" />
+    <!-- Stylized House with valuation chart upward trend -->
+    <path d="M28 17L16 26.5V43H40V26.5L28 17Z" fill="white" fill-opacity="0.15" />
+    <path d="M28 19L18 27V41H38V27L28 19Z" stroke="white" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    <!-- Growth sparkline -->
+    <path d="M22 36L26 31L30 33L35 25" stroke="#A7F3D0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="35" cy="25" r="2.5" fill="#34D399" stroke="white" stroke-width="1.5" />
+  </g>
+  <!-- Brand Wordmark -->
+  <text x="60" y="34" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="800" fill="#0F172A" letter-spacing="-0.5">Valua<tspan fill="#059669">.</tspan></text>
+  <text x="60" y="47" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" fill="#64748B" letter-spacing="1.8">PROPERTY VALUATION</text>
+</svg>

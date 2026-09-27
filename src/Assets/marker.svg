@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 58" width="48" height="58" fill="none">
+  <defs>
+    <filter id="pinShadow" x="-20%" y="-10%" width="140%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#047857" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="pinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+  </defs>
+  <g filter="url(#pinShadow)">
+    <path d="M24 2C13.5066 2 5 10.5066 5 21C5 33.25 21.6 49.3 22.32 50C23.24 50.9 24.76 50.9 25.68 50C26.4 49.3 43 33.25 43 21C43 10.5066 34.4934 2 24 2Z" fill="url(#pinGrad)"/>
+    <circle cx="24" cy="21" r="14" fill="white"/>
+    <!-- House icon inside pin -->
+    <path d="M24 13L17 19V27C17 27.55 17.45 28 18 28H21V23H27V28H30C30.55 28 31 27.55 31 27V19L24 13Z" fill="#047857"/>
+  </g>
+</svg>
