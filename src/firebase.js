@@ -1,5 +1,5 @@
-import firebase from 'firebase'
-import 'firebase/firestore'
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 var firebaseConfig = {
     apiKey: "AIzaSyDybE0bEen3CV5lzqVbT3ZRl73ZKu-AQcM",
@@ -9,7 +9,10 @@ var firebaseConfig = {
     messagingSenderId: "360449449280",
     appId: "1:360449449280:web:a64721a1197e9a592d2ea5"
 };
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
-export {firebase}
+// Initialize Firebase only once
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+
+export { firebase };

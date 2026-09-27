@@ -5,7 +5,6 @@ import TermsAndConditions from '../Pages/TermsAndConditions';
 import Property from '../Pages/Property';
 import Properties from '../Pages/Properties';
 import { Navbar, Footer } from '@/Components';
-import { history } from '../Helpers/history';
 import 'tailwindcss/tailwind.css';
 import {
     HashRouter as Router,
@@ -15,7 +14,7 @@ import {
 
 const App = () => {
     return (
-        <Router history={history}>
+        <Router>
             <div className="min-h-screen flex flex-col bg-slate-50 font-sans selection:bg-emerald-500 selection:text-white">
                 <Navbar />
                 <main className="flex-1 flex flex-col">
