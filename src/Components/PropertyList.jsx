@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PropertyItem } from './PropertyItem';
-import { firebase } from '../firebase';
+import { PopertyService } from '../Services';
 import { Link } from 'react-router-dom';
 
 export const PropertyList = () => {
@@ -12,12 +12,10 @@ export const PropertyList = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const db = firebase.firestore();
-                const snapshot = await db.collection('Properties').get();
-                const arrayData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                const arrayData = await PopertyService.getProperties();
                 setProperties(arrayData);
             } catch (error) {
-                console.error("Error fetching properties from Firestore:", error);
+                console.error("Error fetching properties:", error);
             } finally {
                 setLoading(false);
             }

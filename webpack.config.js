@@ -66,9 +66,18 @@ module.exports = {
             filename: './index.html',
             favicon: './public/favicon.svg'
         }),
-        new webpack.DefinePlugin({
-            'process.env': JSON.stringify(dotenv.config().parsed) // it will automatically pick up key values from .env file
-         }),
+        new webpack.DefinePlugin(
+            Object.keys({ ...(dotenv.config().parsed || {}), ...process.env })
+                .filter(key => key.startsWith('REACT_APP_'))
+                .reduce((env, key) => {
+                    env[`process.env.${key}`] = JSON.stringify(
+                        (dotenv.config().parsed || {})[key] ?? process.env[key]
+                    );
+                    return env;
+                }, {
+                    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
+                })
+        ),
         //  "transform-decorators-legacy"
     ],
     devServer: {

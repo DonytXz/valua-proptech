@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { firebase } from '../firebase';
+import { PopertyService } from '../Services';
 import { Link } from 'react-router-dom';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -47,15 +47,14 @@ export const PropertyDetails = ({ id }) => {
             }
 
             try {
-                const db = firebase.firestore();
-                const doc = await db.collection('Properties').doc(String(docId)).get();
-                if (doc.exists) {
-                    setProperty({ id: doc.id, ...doc.data() });
+                const doc = await PopertyService.getPropertyById(docId);
+                if (doc) {
+                    setProperty(doc);
                 } else {
                     setError("Property document not found in database.");
                 }
             } catch (err) {
-                console.error("Firestore retrieval error:", err);
+                console.error("Property retrieval error:", err);
                 setError(err.message || "Failed to load property data.");
             } finally {
                 setLoading(false);
