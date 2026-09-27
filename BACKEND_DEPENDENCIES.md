@@ -24,7 +24,7 @@ The client application connects directly to Firestore via the Firebase JavaScrip
 
 ```javascript
 var firebaseConfig = {
-    apiKey: "AIzaSyDybE0bEen3CV5lzqVbT3ZRl73ZKu-AQcM",
+    apiKey: "AIzaSy_REDACTED_PROJECT_IDENTIFIER",
     authDomain: "property-valuator.firebaseapp.com",
     projectId: "property-valuator",
     storageBucket: "property-valuator.appspot.com",
