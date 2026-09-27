@@ -66,18 +66,25 @@ module.exports = {
             filename: './index.html',
             favicon: './public/favicon.svg'
         }),
-        new webpack.DefinePlugin(
-            Object.keys({ ...(dotenv.config().parsed || {}), ...process.env })
-                .filter(key => key.startsWith('REACT_APP_'))
-                .reduce((env, key) => {
-                    env[`process.env.${key}`] = JSON.stringify(
-                        (dotenv.config().parsed || {})[key] ?? process.env[key]
-                    );
-                    return env;
-                }, {
-                    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
-                })
-        ),
+        new webpack.DefinePlugin({
+            'process.env': JSON.stringify(
+                Object.keys({ ...(dotenv.config().parsed || {}), ...process.env })
+                    .filter(key => key.startsWith('REACT_APP_'))
+                    .reduce((acc, key) => {
+                        acc[key] = (dotenv.config().parsed || {})[key] ?? process.env[key];
+                        return acc;
+                    }, {
+                        NODE_ENV: process.env.NODE_ENV || 'production',
+                        REACT_APP_VALUA_API_URL: process.env.REACT_APP_VALUA_API_URL || (dotenv.config().parsed || {}).REACT_APP_VALUA_API_URL || 'https://valua-api.onrender.com/api/v1',
+                        REACT_APP_FIREBASE_API_KEY: process.env.REACT_APP_FIREBASE_API_KEY || (dotenv.config().parsed || {}).REACT_APP_FIREBASE_API_KEY || '',
+                        REACT_APP_FIREBASE_AUTH_DOMAIN: 'property-valuator.firebaseapp.com',
+                        REACT_APP_FIREBASE_PROJECT_ID: 'property-valuator',
+                        REACT_APP_FIREBASE_STORAGE_BUCKET: 'property-valuator.appspot.com',
+                        REACT_APP_FIREBASE_MESSAGING_SENDER_ID: '360449449280',
+                        REACT_APP_FIREBASE_APP_ID: '1:360449449280:web:a64721a1197e9a592d2ea5',
+                    })
+            )
+        }),
         //  "transform-decorators-legacy"
     ],
     devServer: {
